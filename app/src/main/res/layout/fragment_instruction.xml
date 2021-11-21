@@ -5,15 +5,15 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:layout_height="match_parent"
+        android:paddingStart="@dimen/margin_medium"
+        android:paddingEnd="@dimen/margin_medium">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/labelOne"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/text_large"
-            android:text="@string/label_welcome_to_shoe_store"
+            android:text="@string/label_info_1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -23,17 +23,17 @@
             android:id="@+id/labelTwo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/label_click_next_to_read_instructions"
+            android:text="@string/label_info_2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/labelOne"
-            app:layout_constraintBottom_toTopOf="@id/actionNext"/>
+            app:layout_constraintBottom_toTopOf="@id/actionStart"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/actionNext"
+            android:id="@+id/actionStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/label_next"
+            android:text="@string/label_start"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
