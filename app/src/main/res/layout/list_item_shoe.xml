@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="shoeData"
+            type="com.udacity.shoestore.models.Shoe" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/margin_small"
+        android:paddingBottom="@dimen/margin_small"
+        android:paddingStart="@dimen/margin_medium"
+        android:paddingEnd="@dimen/margin_medium"
+        xmlns:tools="http://schemas.android.com/tools">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/labelShoeName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_title"
+            android:textColor="@android:color/black"
+            android:text="@{shoeData.name}"
+            tools:text="Shoe Name"
+            app:layout_constraintBottom_toTopOf="@id/labelCompanyName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/labelCompanyName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{shoeData.company}"
+            tools:text="Company Name"
+            app:layout_constraintTop_toBottomOf="@id/labelShoeName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/labelShoeSize"
+            app:layout_constraintBottom_toTopOf="@id/labelDescription"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/labelShoeSize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(shoeData.size)}"
+            tools:text="8"
+            app:layout_constraintBottom_toTopOf="@id/labelDescription"
+            app:layout_constraintTop_toBottomOf="@id/labelShoeName"
+            app:layout_constraintStart_toEndOf="@id/labelCompanyName"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/labelDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{shoeData.description}"
+            tools:text="Description"
+            app:layout_constraintTop_toBottomOf="@id/labelCompanyName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

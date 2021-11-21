@@ -1,4 +1,4 @@
-package com.udacity.shoestore
+package com.udacity.shoestore.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentShoeDetailsBinding
 import com.udacity.shoestore.models.Shoe
 
@@ -20,7 +21,8 @@ class ShoeDetailsFragment: Fragment(), View.OnClickListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewBinding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_shoe_details, container, false)
+        viewBinding = DataBindingUtil.inflate(layoutInflater,
+            R.layout.fragment_shoe_details, container, false)
         viewBinding.actionSave.setOnClickListener(this)
         viewBinding.actionCancel.setOnClickListener(this)
         return viewBinding.root
@@ -43,7 +45,11 @@ class ShoeDetailsFragment: Fragment(), View.OnClickListener {
                     viewBinding.companyNameEdt.text.toString(),
                     viewBinding.descriptionEdt.text.toString()
                 )
-                viewBinding.root.findNavController().navigate(ShoeDetailsFragmentDirections.actionShoeDetailsFragmentToShoeListFragment(shoeData))
+                viewBinding.root.findNavController().navigate(
+                    ShoeDetailsFragmentDirections.actionShoeDetailsFragmentToShoeListFragment(
+                        shoeData
+                    )
+                )
             }
 
             R.id.actionCancel -> {
