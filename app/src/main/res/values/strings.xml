@@ -4,4 +4,7 @@
     <string name="label_password">Password</string>
     <string name="label_sign_up">Sign Up</string>
     <string name="label_sign_in">Sign In</string>
+    <string name="label_welcome_to_shoe_store">Welcome to the Shoe Store</string>
+    <string name="label_click_next_to_read_instructions">Click next to read instructions</string>
+    <string name="label_next">Next</string>
 </resources>

@@ -6,15 +6,15 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp">
+        android:paddingStart="@dimen/margin_medium"
+        android:paddingEnd="@dimen/margin_medium">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/emailLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/label_email"
-            android:layout_marginTop="72dp"
+            android:layout_marginTop="@dimen/top_margin"
             app:layout_constraintStart_toStartOf="@id/emailInputEdt"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/margin_small"
             android:inputType="textEmailAddress"
             app:layout_constraintBottom_toTopOf="@id/passwordLabel"
             app:layout_constraintTop_toBottomOf="@id/emailLabel"
@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/label_password"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/margin_medium"
             app:layout_constraintBottom_toTopOf="@id/passwordInputEdt"
             app:layout_constraintStart_toStartOf="@id/passwordInputEdt"
             app:layout_constraintEnd_toEndOf="parent"
@@ -50,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/margin_small"
             android:inputType="textPassword"
             app:layout_constraintTop_toBottomOf="@id/passwordLabel"
             app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/label_sign_up"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/margin_medium"
             app:layout_constraintTop_toBottomOf="@id/passwordInputEdt"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/actionSignIn"/>
@@ -71,7 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/label_sign_in"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/margin_medium"
             app:layout_constraintTop_toBottomOf="@id/passwordInputEdt"
             app:layout_constraintStart_toEndOf="@id/actionSignUp"
             app:layout_constraintEnd_toEndOf="parent"/>

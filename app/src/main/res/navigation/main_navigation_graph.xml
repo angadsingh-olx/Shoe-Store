@@ -17,5 +17,15 @@
     <fragment
         android:id="@+id/onboardingFragment"
         android:name="com.udacity.shoestore.OnboardingFragment"
-        android:label="OnboardingFragment" />
+        android:label="OnboardingFragment" >
+
+        <action
+            android:id="@+id/action_onboardingFragment_to_instructionFragment"
+            app:destination="@id/instructionFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/instructionFragment"
+        android:name="com.udacity.shoestore.InstructionFragment"
+        android:label="InstructionFragment" />
 </navigation>
