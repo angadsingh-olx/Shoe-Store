@@ -28,6 +28,7 @@ class ShoeListFragment: Fragment(), BindingClickListener {
         viewBinding = DataBindingUtil.inflate(layoutInflater,
             R.layout.fragment_shoe_list, container, false)
 
+        viewBinding.lifecycleOwner = this
         viewBinding.viewModel = shoeDetailsViewModel
 
         viewBinding.clickListener= this

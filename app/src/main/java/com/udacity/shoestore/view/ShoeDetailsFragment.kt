@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
@@ -24,7 +23,9 @@ class ShoeDetailsFragment: Fragment(), ShoeDetailsClickListener {
     ): View {
         viewBinding = DataBindingUtil.inflate(layoutInflater,
             R.layout.fragment_shoe_details, container, false)
+        viewBinding.lifecycleOwner = this
         viewBinding.clickListener = this
+        viewBinding.shoe = Shoe()
         return viewBinding.root
     }
 
@@ -33,23 +34,10 @@ class ShoeDetailsFragment: Fragment(), ShoeDetailsClickListener {
     }
 
     override fun onSave() {
-        if (viewBinding.shoeNameEdt.text.isNullOrEmpty()||
-            viewBinding.shoeSizeEdt.text.isNullOrEmpty()||
-            viewBinding.companyNameEdt.text.isNullOrEmpty()||
-            viewBinding.descriptionEdt.text.isNullOrEmpty()) {
-            Toast.makeText(requireContext(), getString(R.string.label_empty_error), Toast.LENGTH_LONG).show()
-            return
-        }
-
-        val shoeData = Shoe(
-            viewBinding.shoeNameEdt.text.toString(),
-            viewBinding.shoeSizeEdt.text.toString().toDouble(),
-            viewBinding.companyNameEdt.text.toString(),
-            viewBinding.descriptionEdt.text.toString()
-        )
+        viewBinding.shoe?.size = viewBinding.shoeSizeEdt.text.toString().toDouble()
         viewBinding.root.findNavController().navigate(
             ShoeDetailsFragmentDirections.actionShoeDetailsFragmentToShoeListFragment(
-                shoeData
+                viewBinding.shoe!!
             )
         )
     }

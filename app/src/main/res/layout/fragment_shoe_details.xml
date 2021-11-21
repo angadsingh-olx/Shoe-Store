@@ -4,6 +4,10 @@
 
     <data>
         <variable
+            name="shoe"
+            type="com.udacity.shoestore.models.Shoe" />
+
+        <variable
             name="clickListener"
             type="com.udacity.shoestore.listeners.ShoeDetailsClickListener" />
     </data>
@@ -24,7 +28,8 @@
             android:id="@+id/shoeNameEdt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"/>
+            android:ems="10"
+            android:text="@={shoe.name}"/>
 
         <TextView
             android:id="@+id/labelCompanyName"
@@ -37,7 +42,8 @@
             android:id="@+id/companyNameEdt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"/>
+            android:ems="10"
+            android:text="@={shoe.company}"/>
 
         <TextView
             android:id="@+id/labelShoeSize"
@@ -66,6 +72,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:gravity="start|top"
+            android:text="@={shoe.description}"
             android:inputType="textMultiLine" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
