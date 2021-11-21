@@ -9,6 +9,9 @@
         <entry key="app/src/main/res/layout/fragment_instruction.xml" value="0.213768115942029" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_onboarding.xml" value="0.18614130434782608" />
+        <entry key="app/src/main/res/layout/fragment_shoe_details.xml" value="0.1625" />
+        <entry key="app/src/main/res/layout/fragment_shoe_list.xml" value="0.1625" />
+        <entry key="app/src/main/res/menu/shoe_list_menu.xml" value="0.1625" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.32974358974358975" />
       </map>
     </option>
