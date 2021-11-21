@@ -8,10 +8,12 @@
         android:id="@+id/loginFragment"
         android:name="com.udacity.shoestore.LoginFragment"
         android:label="LoginFragment" >
+
         <action
             android:id="@+id/action_loginFragment_to_onboardingFragment"
             app:destination="@id/onboardingFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/onboardingFragment"
         android:name="com.udacity.shoestore.OnboardingFragment"
