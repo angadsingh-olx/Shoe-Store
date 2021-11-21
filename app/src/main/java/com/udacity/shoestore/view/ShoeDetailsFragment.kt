@@ -10,9 +10,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentShoeDetailsBinding
+import com.udacity.shoestore.listeners.ShoeDetailsClickListener
 import com.udacity.shoestore.models.Shoe
 
-class ShoeDetailsFragment: Fragment(), View.OnClickListener {
+class ShoeDetailsFragment: Fragment(), ShoeDetailsClickListener {
 
     private lateinit var viewBinding: FragmentShoeDetailsBinding
 
@@ -23,38 +24,33 @@ class ShoeDetailsFragment: Fragment(), View.OnClickListener {
     ): View {
         viewBinding = DataBindingUtil.inflate(layoutInflater,
             R.layout.fragment_shoe_details, container, false)
-        viewBinding.actionSave.setOnClickListener(this)
-        viewBinding.actionCancel.setOnClickListener(this)
+        viewBinding.clickListener = this
         return viewBinding.root
     }
 
-    override fun onClick(v: View?) {
-        when(v?.id) {
-            R.id.actionSave -> {
-                if (viewBinding.shoeNameEdt.text.isNullOrEmpty()||
-                    viewBinding.shoeSizeEdt.text.isNullOrEmpty()||
-                    viewBinding.companyNameEdt.text.isNullOrEmpty()||
-                    viewBinding.descriptionEdt.text.isNullOrEmpty()) {
-                    Toast.makeText(requireContext(), getString(R.string.label_empty_error), Toast.LENGTH_LONG).show()
-                    return
-                }
+    override fun onCancel() {
+        viewBinding.root.findNavController().navigateUp()
+    }
 
-                val shoeData = Shoe(
-                    viewBinding.shoeNameEdt.text.toString(),
-                    viewBinding.shoeSizeEdt.text.toString().toDouble(),
-                    viewBinding.companyNameEdt.text.toString(),
-                    viewBinding.descriptionEdt.text.toString()
-                )
-                viewBinding.root.findNavController().navigate(
-                    ShoeDetailsFragmentDirections.actionShoeDetailsFragmentToShoeListFragment(
-                        shoeData
-                    )
-                )
-            }
-
-            R.id.actionCancel -> {
-                viewBinding.root.findNavController().navigateUp()
-            }
+    override fun onSave() {
+        if (viewBinding.shoeNameEdt.text.isNullOrEmpty()||
+            viewBinding.shoeSizeEdt.text.isNullOrEmpty()||
+            viewBinding.companyNameEdt.text.isNullOrEmpty()||
+            viewBinding.descriptionEdt.text.isNullOrEmpty()) {
+            Toast.makeText(requireContext(), getString(R.string.label_empty_error), Toast.LENGTH_LONG).show()
+            return
         }
+
+        val shoeData = Shoe(
+            viewBinding.shoeNameEdt.text.toString(),
+            viewBinding.shoeSizeEdt.text.toString().toDouble(),
+            viewBinding.companyNameEdt.text.toString(),
+            viewBinding.descriptionEdt.text.toString()
+        )
+        viewBinding.root.findNavController().navigate(
+            ShoeDetailsFragmentDirections.actionShoeDetailsFragmentToShoeListFragment(
+                shoeData
+            )
+        )
     }
 }

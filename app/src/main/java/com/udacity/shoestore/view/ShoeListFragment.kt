@@ -12,10 +12,11 @@ import androidx.navigation.ui.NavigationUI
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentShoeListBinding
 import com.udacity.shoestore.databinding.ListItemShoeBinding
+import com.udacity.shoestore.listeners.BindingClickListener
 import com.udacity.shoestore.models.Shoe
 import com.udacity.shoestore.viewmodel.ShoeDetailsViewModel
 
-class ShoeListFragment: Fragment() {
+class ShoeListFragment: Fragment(), BindingClickListener {
 
     private lateinit var viewBinding: FragmentShoeListBinding
 
@@ -31,9 +32,7 @@ class ShoeListFragment: Fragment() {
 
         viewBinding.viewModel = shoeDetailsViewModel
 
-        viewBinding.actionAdd.setOnClickListener {
-            viewBinding.root.findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailsFragment())
-        }
+        viewBinding.clickListener= this
 
         shoeDetailsViewModel.shoeListLiveData.observe(viewLifecycleOwner, { shoes ->
             for (shoe in shoes) {
@@ -41,12 +40,12 @@ class ShoeListFragment: Fragment() {
             }
         })
 
-        setHasOptionsMenu(true)
-
         if (arguments?.getParcelable<Shoe>("shoeData") != null) {
             val shoe = arguments?.getParcelable<Shoe>("shoeData")
             shoeDetailsViewModel.addShoe(shoe!!)
         }
+
+        setHasOptionsMenu(true)
 
         return viewBinding.root
     }
@@ -65,5 +64,9 @@ class ShoeListFragment: Fragment() {
         val binding = DataBindingUtil.inflate<ListItemShoeBinding>(layoutInflater, R.layout.list_item_shoe, viewBinding.shoeList, false)
         binding.shoeData = shoe
         viewBinding.shoeList.addView(binding.root)
+    }
+
+    override fun onClick() {
+        viewBinding.root.findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailsFragment())
     }
 }

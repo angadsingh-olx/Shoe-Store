@@ -9,8 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentOnboardingBinding
+import com.udacity.shoestore.listeners.BindingClickListener
 
-class OnboardingFragment: Fragment() {
+class OnboardingFragment: Fragment(), BindingClickListener {
 
     private lateinit var viewBinding: FragmentOnboardingBinding
 
@@ -22,10 +23,11 @@ class OnboardingFragment: Fragment() {
         viewBinding = DataBindingUtil.inflate(layoutInflater,
             R.layout.fragment_onboarding, container, false)
 
-        viewBinding.actionNext.setOnClickListener{
-            viewBinding.root.findNavController().navigate(OnboardingFragmentDirections.actionOnboardingFragmentToInstructionFragment())
-        }
-
+        viewBinding.clickListener = this
         return viewBinding.root
+    }
+
+    override fun onClick() {
+        viewBinding.root.findNavController().navigate(OnboardingFragmentDirections.actionOnboardingFragmentToInstructionFragment())
     }
 }

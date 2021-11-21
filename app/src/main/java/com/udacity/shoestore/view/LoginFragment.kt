@@ -1,6 +1,7 @@
 package com.udacity.shoestore.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +10,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentLoginBinding
+import com.udacity.shoestore.listeners.LoginClickListener
+import timber.log.Timber
 
-class LoginFragment: Fragment(), View.OnClickListener {
+class LoginFragment: Fragment(), LoginClickListener {
 
     private lateinit var viewBinding: FragmentLoginBinding
 
@@ -21,16 +24,16 @@ class LoginFragment: Fragment(), View.OnClickListener {
     ): View {
         viewBinding = DataBindingUtil.inflate(layoutInflater,
             R.layout.fragment_login, container, false)
-        viewBinding.actionSignIn.setOnClickListener(this)
-        viewBinding.actionSignUp.setOnClickListener(this)
+        viewBinding.clickListener = this
         return viewBinding.root
     }
 
-    override fun onClick(v: View?) {
-        when(v?.id) {
-            R.id.actionSignIn, R.id.actionSignUp -> {
-                viewBinding.root.findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToOnboardingFragment())
-            }
-        }
+    override fun onSignIn() {
+        viewBinding.root.findNavController()
+            .navigate(LoginFragmentDirections.actionLoginFragmentToOnboardingFragment())
+    }
+
+    override fun onSignUp() {
+        viewBinding.root.findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToOnboardingFragment())
     }
 }

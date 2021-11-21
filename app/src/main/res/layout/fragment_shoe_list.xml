@@ -6,6 +6,10 @@
         <variable
             name="viewModel"
             type="com.udacity.shoestore.viewmodel.ShoeDetailsViewModel" />
+
+        <variable
+            name="clickListener"
+            type="com.udacity.shoestore.listeners.BindingClickListener" />
     </data>
 
     <FrameLayout
@@ -25,6 +29,7 @@
             android:layout_margin="@dimen/margin_medium"
             android:layout_gravity="bottom|end"
             android:src="@drawable/ic_add"
+            android:onClick="@{() -> clickListener.onClick()}"
             android:contentDescription="@string/label_add_shoe" />
     </FrameLayout>
 </layout>
