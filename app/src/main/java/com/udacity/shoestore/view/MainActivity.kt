@@ -1,8 +1,10 @@
 package com.udacity.shoestore.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
@@ -25,9 +27,15 @@ class MainActivity : AppCompatActivity() {
         Timber.plant(Timber.DebugTree())
 
         val navController = this.findNavController(R.id.myNavHostFragment)
-        NavigationUI.setupActionBarWithNavController(this, navController)
-
         appBarConfiguration = AppBarConfiguration(navController.graph)
+
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
+
+        navController.addOnDestinationChangedListener { nc: NavController, nd: NavDestination, _: Bundle? ->
+            if (nd.id == R.id.shoeListFragment) {
+                binding.toolbar.navigationIcon = null
+            }
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

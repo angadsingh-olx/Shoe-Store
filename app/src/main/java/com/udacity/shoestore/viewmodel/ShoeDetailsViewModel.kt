@@ -17,4 +17,8 @@ class ShoeDetailsViewModel: ViewModel() {
         shoeList.add(shoe)
         _shoeListLiveData.value = shoeList
     }
+
+    fun clearData() {
+        shoeList.clear()
+    }
 }

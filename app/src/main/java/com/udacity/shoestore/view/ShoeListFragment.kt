@@ -5,9 +5,7 @@ import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.NavigationUI
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentShoeListBinding
@@ -56,6 +54,13 @@ class ShoeListFragment: Fragment(), BindingClickListener {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId)  {
+            R.id.menuLogout  -> {
+                shoeDetailsViewModel.clearData()
+                viewBinding.root.findNavController().navigate(R.id.action_shoeListFragment_to_loginFragment)
+                return super.onOptionsItemSelected(item)
+            }
+        }
         return NavigationUI.onNavDestinationSelected(item, requireView().findNavController())
                 || super.onOptionsItemSelected(item)
     }
