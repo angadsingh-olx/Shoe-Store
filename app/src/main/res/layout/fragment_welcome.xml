@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Since the layout is very simple either of Linear or ConstraintLayout can be used here-->
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<!-- As the UI of the screen is already flat, using a linearlayout instead of constraintlayout
+     which is more optimised for these scenarios -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
         <variable
@@ -10,9 +9,11 @@
             type="com.udacity.shoestore.listeners.BindingClickListener" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
 
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -20,31 +21,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_large"
-            android:text="@string/label_welcome_to_shoe_store"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/labelTwo"/>
+            android:text="@string/label_welcome_to_shoe_store"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/labelTwo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/label_click_next_to_read_instructions"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/labelOne"
-            app:layout_constraintBottom_toTopOf="@id/actionNext"/>
+            android:layout_marginTop="@dimen/margin_medium"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/actionNext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/label_next"
-            android:onClick="@{() -> clickListener.onClick()}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/labelTwo"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_marginTop="@dimen/top_margin"
+            android:onClick="@{() -> clickListener.onClick()}"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

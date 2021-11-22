@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--Used a constraint layout because there could have been multiple levels of nesting with linear layout-->
+<!--Used a constraint layout because there will been multiple levels of
+    nesting with a linear layout-->
+
 <layout>
     <data>
         <variable

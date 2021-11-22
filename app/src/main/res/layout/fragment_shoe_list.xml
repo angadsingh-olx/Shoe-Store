@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Here we are implementing a vertical list, so it makes it much easy to
+     implement it with a LinearLayout having vertical orientation. Using constraint
+     layout adds complexity of putting constraints in the added view. -->
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android">
 

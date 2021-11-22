@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--To avoid one level of nesting I used a ConstraintLayout here-->
+<!-- The UI requires one level of nesting with a LinearLayout, to avoid doing that and
+     keeping the hierarchy flat, adding a ConstraintLayout-->
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
