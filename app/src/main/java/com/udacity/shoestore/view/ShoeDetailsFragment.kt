@@ -40,11 +40,14 @@ class ShoeDetailsFragment: Fragment(), ShoeDetailsClickListener {
     }
 
     override fun onSave() {
-        viewBinding.viewModel?.shoe?.size = viewBinding.shoeSizeEdt.text.toString().toDouble()
+        viewBinding.viewModel?.shoe?.size = if (viewBinding.shoeSizeEdt.text.toString().isNotEmpty()) {
+            viewBinding.shoeSizeEdt.text.toString().toDouble()
+        } else {
+            0.0
+        }
+        shoeDetailsViewModel.addShoe(shoeDetailsViewModel.shoe)
         viewBinding.root.findNavController().navigate(
-            ShoeDetailsFragmentDirections.actionShoeDetailsFragmentToShoeListFragment(
-                viewBinding.viewModel?.shoe!!
-            )
+            ShoeDetailsFragmentDirections.actionShoeDetailsFragmentToShoeListFragment()
         )
     }
 }

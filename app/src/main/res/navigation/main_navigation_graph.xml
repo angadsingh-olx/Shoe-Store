@@ -61,11 +61,6 @@
             android:id="@+id/action_shoeDetailsFragment_to_shoeListFragment"
             app:destination="@id/shoeListFragment"
             app:popUpTo="@id/shoeDetailsFragment"
-            app:popUpToInclusive="true">
-
-            <argument
-                android:name="shoeData"
-                app:argType="com.udacity.shoestore.models.Shoe" />
-        </action>
+            app:popUpToInclusive="true"/>
     </fragment>
 </navigation>
